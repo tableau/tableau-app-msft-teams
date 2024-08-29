@@ -1,0 +1,152 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.14",
+  "version": "1.0.0",
+  "id": "ddb52196-dcbf-49d4-9528-6b1bffaa1dbd",
+  "developer": {
+    "name": "Tableau",
+    "websiteUrl": "https://developer.tableau.com",
+    "privacyUrl": "https://www.salesforce.com/company/privacy/",
+    "termsOfUseUrl": "https://www.tableau.com/legal/eula"
+  },
+  "icons": {
+    "color": "icon-color-white.png",
+    "outline": "icon-outline.png"
+  },
+  "name": {
+    "short": "Tableau Server",
+    "full": "Tableau Server"
+  },
+  "description": {
+    "short": "Discover Tableau content in meetings, channel tabs, and in the personal app",
+    "full": "Tableau Server for Microsoft Teams is a free app. Designed for any business user, the app makes it easy to consume Tableau content within Microsoft Teams. There are several places within teams to access the Tableau Cloud app - though personal apps, channel tabs, and in meetings. Stay in the flow of your work by securely consuming and sharing Tableau content, without leaving Teams. This app requires the user to have a Tableau license. "
+  },
+  "accentColor": "#FFFFFF",
+  "supportedChannelTypes": [
+    "sharedChannels",
+    "privateChannels"
+  ],
+  "staticTabs": [
+    {
+      "entityId": "tableauCloudTabView",
+      "name": "Tableau",
+      "contentUrl": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/tabs/",
+      "websiteUrl": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net",
+      "scopes": ["personal"]
+    },
+    {
+      "entityId": "tableauCloudTabConfig",
+      "name": "Configuration",
+      "contentUrl": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/tabs/#/config",
+      "websiteUrl": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net",
+      "scopes": ["personal"]
+    }
+  ],
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/tabs/#/sharedChannelConfig",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team",
+        "groupchat"
+      ],
+      "context":[
+        "channelTab",
+        "privateChatTab",
+        "meetingChatTab",
+        "meetingDetailsTab",
+        "meetingSidePanel",
+        "meetingStage"
+     ]
+    }
+  ],
+  "bots": [
+    {
+      "botId": "ddb52196-dcbf-49d4-9528-6b1bffaa1dbd",
+      "scopes": [
+        "groupchat"
+      ],
+      "commandLists": [],
+      "needsChannelSelector": false,
+      "supportsFiles": false,
+      "isNotificationOnly": false
+    }
+  ],
+  "composeExtensions": [
+    {
+      "botId": "ddb52196-dcbf-49d4-9528-6b1bffaa1dbd",
+      "canUpdateConfiguration": true,
+      "commands": [
+        {
+          "id": "searchView",
+          "type": "query",
+          "title": "Views",
+          "description": "Search Tableau Server for a Viz",
+          "initialRun": false,
+          "fetchTask": false,
+          "context": [
+            "commandBox",
+            "compose",
+            "message"
+          ],
+          "parameters": [
+            {
+              "name": "searchQuery",
+              "title": "Views",
+              "description": "Your search query",
+              "inputType": "text"
+            }
+          ]
+        }
+      ],
+      "messageHandlers": [
+        {
+          "type": "link",
+          "value": {
+            "supportsAnonymizedPayloads": false,
+            "domains": [
+              "*.online.tableau.com"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "webApplicationInfo": {
+    "id": "ddb52196-dcbf-49d4-9528-6b1bffaa1dbd",
+    "resource": "api://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/botid-ddb52196-dcbf-49d4-9528-6b1bffaa1dbd"
+  },
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "*.githubusercontent.com",
+    "*.tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net",
+    "tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net",
+    "*.online.tableau.com",
+    "token.botframework.com"
+  ],
+  "authorization": {
+    "permissions": {
+      "resourceSpecific": [
+        {
+          "name": "MeetingStage.Write.Chat",
+          "type": "Delegated"
+        },
+        {
+          "name": "ChannelMeetingStage.Write.Group",
+          "type": "Delegated"
+        },
+        {
+          "name": "LiveShareSession.ReadWrite.Chat",
+          "type": "Delegated"
+        },
+        {
+          "name": "LiveShareSession.ReadWrite.Group",
+          "type": "Delegated"
+        }
+      ]
+    }
+  }
+}
