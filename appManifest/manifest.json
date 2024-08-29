@@ -60,18 +60,6 @@
      ]
     }
   ],
-  "bots": [
-    {
-      "botId": "ddb52196-dcbf-49d4-9528-6b1bffaa1dbd",
-      "scopes": [
-        "groupchat"
-      ],
-      "commandLists": [],
-      "needsChannelSelector": false,
-      "supportsFiles": false,
-      "isNotificationOnly": false
-    }
-  ],
   "composeExtensions": [
     {
       "botId": "ddb52196-dcbf-49d4-9528-6b1bffaa1dbd",
@@ -121,7 +109,6 @@
     "messageTeamMembers"
   ],
   "validDomains": [
-    "*.githubusercontent.com",
     "*.tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net",
     "tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net",
     "*.online.tableau.com",
