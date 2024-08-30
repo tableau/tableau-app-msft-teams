@@ -136,7 +136,7 @@ Adaptive cards are how all 3rd party content gets rendered within Teams chats/ch
 ![view card](/public/images/image22.png)
 ![pulse card](/public/images/image1.png)
 
-If you don’t have the URL for your view/metric, you can also search for the content you want to embed.  Click on the more button (3 horizontal dots), and select the Tableau app.    
+If you don’t have the URL for your view/metric, you can also search for the content you want to embed.  Click on the plus button (actions and apps), and select the Tableau app.    
 
 ![message extension](/public/images/image9.png)
 
