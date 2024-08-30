@@ -17,7 +17,7 @@ In order to use the Tableau App for Microsoft Teams, you need a few things:
 
 If you are using Tableau Cloud, you can install the Tableau Cloud app for Teams in the Microsoft Teams Marketplace.
 
-If you are using Tableau Server, download the manifest (zip file) titled ‘tableau-server-app-for-teams.zip’ from [this repository](https://github.com/tableau/tableau-app-msft-teams/raw/main/appManifest/tableau-server-app-for-teams.zip).  Before we can use it though, we’ll have to make some edits.  Unzip the file, and open up manifest.json.  Search the manifest.json file for all occurrences of ```*.online.tableau.com```.  Replace this with the hostname of your Tableau Server environment.  For example, if your Tableau Server is found at ```https://analytics.company.com``` then you would use ```analytics.company.com``` as the new value.  There should be two occurrences that need to be changed:
+If you are using Tableau Server, download the manifest (zip file) titled ‘tableau-server-app-for-teams.zip’ from [this repository](https://github.com/tableau/tableau-app-msft-teams/raw/main/appManifest/tableau-app-for-teams-server.zip).  Before we can use it though, we’ll have to make some edits.  Unzip the file, and open up manifest.json.  Search the manifest.json file for all occurrences of ```*.online.tableau.com```.  Replace this with the hostname of your Tableau Server environment.  For example, if your Tableau Server is found at ```https://analytics.company.com``` then you would use ```analytics.company.com``` as the new value.  There should be two occurrences that need to be changed:
 
 * composeExtensions.messageHandlers.value.domains
 
