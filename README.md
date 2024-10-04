@@ -72,6 +72,10 @@ teams.microsoft.com
 ```
 The first domain is where our app service is hosted, and the next 2 cover Microsoft Teams.  You may need to specify additional domains, if you are using the app in other platforms (outlook, m365, etc).  Microsoft provides a list of domains for their platforms [here](https://learn.microsoft.com/en-us/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide#microsoft-teams)
 
+Click on the below image, to watch our getting started [video](https://www.youtube.com/watch?v=nsa123RgCO0) on YouTube:
+
+[![Getting Started with the Tableau app for Microsoft Teams](https://img.youtube.com/vi/nsa123RgCO0/0.jpg)](https://www.youtube.com/watch?v=nsa123RgCO0)
+
 ## Managing your sites
 
 Once your app has been configured for 1 or more sites, you can always get back to the site manager by using the **Configuration** tab within the Personal App.  This page verifies that you are a Tableau admin, and then shows a list of any connected apps already setup.  You can add or delete connected apps using this page.  We’ve limited the app to just a single connected app per Teams tenant \+ Tableau site.
