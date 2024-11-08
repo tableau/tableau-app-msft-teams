@@ -5,6 +5,8 @@
 
 The Tableau Cloud app for Microsoft Teams is a new app in the MSFT Teams Marketplace (GA this summer), that makes it easy to consume your content within Teams.  As the name implies, the version in the Teams Marketplace is only for Tableau Cloud.  This repository contains the app manifest files required to side-load the Tableau Server app for Microsoft Teams.  Side-loading is required, because the app manifest needs to be updated to point to the customer's Tableau Server environment domains.  
 
+Check out the [release notes](/ReleaseNotes.md), for the details of any updates.
+
 ## Prerequisites
 
 In order to use the Tableau App for Microsoft Teams, you need a few things:
@@ -58,7 +60,7 @@ You should see a purple **Add** button.  Clicking here will install the Tableau 
 
 ## First time setup
 
-When you install the app for the first time, Teams will prompt you to open the app.  This brings you to the Tableau app’s Personal tab.  Assuming no sites have already been configured for the Teams tenant, you will see a different landing page that prompts you to enter some authentication details.  
+When you install the app for the first time, Teams will prompt you to open the app.  This brings you to the Tableau app’s Personal tab.  Assuming no sites have already been configured for the Teams tenant, you will see a different landing page that prompts you to enter some authentication details.  If you are using Tableau Server and want to use your [default site](https://help.tableau.com/current/server/en-us/sites_intro.htm#the-default-site), leave the site name input field blank.
 ![Ininital setup](/public/images/image8.png)
 Use the below documentation to create a direct trust connected app in Tableau, and enter those details into this form.  
 
@@ -191,6 +193,11 @@ Before the content is shared, the Tableau app automatically converts the viz/met
 
 In this scenario the other user will see the preview image (similar to taking a screenshot and sharing the image) but if they click the “Open” button from the card, the Personal App will display an error saying that viz/metric could not be found.  There’s no way to say 100% that this is a permission issue (it could have been moved or deleted), so the wording of the error message has to be a bit vague.
 
+**I've deleted the connected app details from Tableau Cloud/Server, and now I can't login to the app**
+
+The Tableau app for Teams stores your connected app details in a database, and uses them when it first loads to authenticate you to Tableau Server/Cloud.  If the connected app details are disabled or deleted from Tableau Cloud/Server, the Teams app will no longer be able to authenticate you and just give you a login error message.  This can lead to getting locked out of the app, if you configure it for one site and then delete those connected app details later on.  
+
+From the app's perspective, we want to ensure only Site/Server Admins can add/remove connected app details so if we can't verify your identity then we shouldn't provide a way to delete the connected app details from our backend.  If you need us to delete the connected app details for your site, please submit a [support ticket](https://www.tableau.com/support/case) and provide the full URL to your Tableau environment and provide written consent from your Tableau Admin for us to remove your connected app details.  
 
 [^1]:  The URL can be copied a few different ways.  You can copy/paste the URL from your browser window or use the link from the Share button.  This also works on custom views.  Pulse metrics don’t have a share button, so just copy/paste the URL from the browser window.
 
