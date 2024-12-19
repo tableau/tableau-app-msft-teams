@@ -1,140 +1,135 @@
 {
-    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
-    "manifestVersion": "1.14",
-    "version": "1.0.0",
-    "id": "ddb52196-dcbf-49d4-9528-6b1bffaa1dbd",
-    "developer": {
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.14/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.14",
+  "version": "1.0.0",
+  "id": "ddb52196-dcbf-49d4-9528-6b1bffaa1dbd",
+  "developer": {
+    "name": "Tableau",
+    "mpnId": "6836154",
+    "websiteUrl": "https://www.tableau.com/developer",
+    "privacyUrl": "https://www.salesforce.com/company/legal/privacy/",
+    "termsOfUseUrl": "https://www.tableau.com/legal/eula"
+  },
+  "icons": {
+    "color": "icon-color-white.png",
+    "outline": "icon-outline.png"
+  },
+  "name": {
+    "short": "Tableau Server",
+    "full": "Tableau Server"
+  },
+  "description": {
+    "short": "Access Tableau's self-service analytics directly in Microsoft Teams",
+    "full": "The Tableau Server App for Microsoft Teams is an app designed for any business user. It is easier than ever to access, share, and collaborate on your Tableau dashboards within Microsoft Teams. Access Tableau through the personal app, channels tabs, and during meetings, ensuring that your trusted data is always at your fingertips, empowering data-driven decision making. \n\nTo get started, simply install the Tableau Server app using the below guide. \n\nOnce installed, you can:\n - Integrate key Tableau visualizations into your meetings in real-time\n - Share and pin your most relevant Tableau content in message and in channels\n - Discover and Interact with Tableau dashboards directly in Microsoft Teams\n\nNote: The Tableau Server app for Teams requires a Tableau license to unlock its full potential. Please refer to our detailed [GitHub documentation](https://github.com/tableau/tableau-app-msft-teams) for installation guidance with Server environments\n\n[Installation Instructions](https://github.com/tableau/tableau-app-msft-teams)\n[Get Started](https://www.tableau.com/products/trial)\n[Contact Us](https://www.tableau.com/about/contact)"
+  },
+  "accentColor": "#FFFFFF",
+  "supportedChannelTypes": [
+    "sharedChannels",
+    "privateChannels"
+  ],
+  "staticTabs": [
+    {
+      "entityId": "tableauCloudTabView",
       "name": "Tableau",
-      "mpnId": "6836154",
-      "websiteUrl": "https://www.tableau.com/developer",
-      "privacyUrl": "https://www.tableau.com/privacy",
-      "termsOfUseUrl": "https://www.tableau.com/legal/eula"
+      "contentUrl": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/tabs/",
+      "scopes": ["personal"]
     },
-    "icons": {
-      "color": "icon-color-white.png",
-      "outline": "icon-outline.png"
-    },
-    "name": {
-      "short": "Tableau Server",
-      "full": "Tableau Server"
-    },
-    "description": {
-      "short": "Access Tableau's AI-powered, self-service analytics directly in Microsoft Teams",
-      "full": "The Tableau Server App for Microsoft Teams is an app designed for any business user. It is easier than ever to access, share, and collaborate on your Tableau dashboards and Tableau Pulse Metrics within Teams. Access Tableau through the personal app, channels tabs, and during meetings, ensuring that your trusted data is always at your fingertips, empowering data-driven decision making. \n\nTo get started, simply install the Tableau app from the Teams Marketplace. \n\nOnce installed, you can:\n - Integrate key Tableau metrics and visualization into your meetings in real-time\n - Share and pin your most relevant Tableau content in message and in channels\n - Discover and Interact with Tableau Pulse Metrics directly in Teams\n\nNote: The Tableau Server app for Teams requires a Tableau Server license to unlock its full potential. Tableau Server users can also manually configure the app for their server environment. Please refer to our detailed [GitHub documentation](https://github.com/tableau/tableau-app-msft-teams) for installation guidance with Server environments\n\n[Installation Instructions](https://github.com/tableau/tableau-app-msft-teams)\n[Get Started](https://www.tableau.com/products/trial)\n[Contact Us](https://www.tableau.com/about/contact)"
-    },
-    "accentColor": "#FFFFFF",
-    "supportedChannelTypes": [
-      "sharedChannels",
-      "privateChannels"
-    ],
-    "staticTabs": [
-      {
-        "entityId": "tableauCloudTabView",
-        "name": "Tableau",
-        "contentUrl": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/tabs/",
-        "websiteUrl": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net",
-        "scopes": ["personal"]
-      },
-      {
-        "entityId": "tableauCloudTabConfig",
-        "name": "Configuration",
-        "contentUrl": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/tabs/#/config",
-        "websiteUrl": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net",
-        "scopes": ["personal"]
-      }
-    ],
-    "configurableTabs": [
-      {
-        "configurationUrl": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/tabs/#/sharedChannelConfig",
-        "canUpdateConfiguration": true,
-        "scopes": [
-          "team",
-          "groupchat"
-        ],
-        "context":[
-          "channelTab",
-          "privateChatTab",
-          "meetingChatTab",
-          "meetingDetailsTab",
-          "meetingSidePanel",
-          "meetingStage"
-       ]
-      }
-    ],
-    "composeExtensions": [
-      {
-        "botId": "ddb52196-dcbf-49d4-9528-6b1bffaa1dbd",
-        "canUpdateConfiguration": true,
-        "commands": [
-          {
-            "id": "searchView",
-            "type": "query",
-            "title": "Views",
-            "description": "Search Tableau Server for a Viz",
-            "initialRun": false,
-            "fetchTask": false,
-            "context": [
-              "commandBox",
-              "compose",
-              "message"
-            ],
-            "parameters": [
-              {
-                "name": "searchQuery",
-                "title": "Views",
-                "description": "Your search query",
-                "inputType": "text"
-              }
-            ]
-          }
-        ],
-        "messageHandlers": [
-          {
-            "type": "link",
-            "value": {
-              "supportsAnonymizedPayloads": false,
-              "domains": [
-                "*.online.tableau.com"
-              ]
+    {
+      "entityId": "tableauCloudTabConfig",
+      "name": "Configuration",
+      "contentUrl": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/tabs/#/config",
+      "scopes": ["personal"]
+    }
+  ],
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/tabs/#/sharedChannelConfig",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team",
+        "groupchat"
+      ],
+      "context":[
+        "channelTab",
+        "privateChatTab",
+        "meetingChatTab",
+        "meetingDetailsTab",
+        "meetingSidePanel",
+        "meetingStage"
+     ]
+    }
+  ],
+  "composeExtensions": [
+    {
+      "botId": "ddb52196-dcbf-49d4-9528-6b1bffaa1dbd",
+      "canUpdateConfiguration": false,
+      "commands": [
+        {
+          "id": "searchView",
+          "type": "query",
+          "title": "Views",
+          "description": "Search Tableau Server for a Viz",
+          "initialRun": false,
+          "fetchTask": false,
+          "context": [
+            "commandBox",
+            "compose"
+          ],
+          "parameters": [
+            {
+              "name": "searchQuery",
+              "title": "Views",
+              "description": "Your search query",
+              "inputType": "text"
             }
+          ]
+        }
+      ],
+      "messageHandlers": [
+        {
+          "type": "link",
+          "value": {
+            "domains": ["*.online.tableau.com"]
           }
-        ]
-      }
-    ],
-    "webApplicationInfo": {
-      "id": "ddb52196-dcbf-49d4-9528-6b1bffaa1dbd",
-      "resource": "api://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/botid-ddb52196-dcbf-49d4-9528-6b1bffaa1dbd"
-    },
-    "permissions": [
-      "identity",
-      "messageTeamMembers"
-    ],
-    "validDomains": [
-      "*.tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net",
-      "tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net",
-      "*.online.tableau.com",
-      "token.botframework.com"
-    ],
-    "authorization": {
-      "permissions": {
-        "resourceSpecific": [
-          {
-            "name": "MeetingStage.Write.Chat",
-            "type": "Delegated"
-          },
-          {
-            "name": "ChannelMeetingStage.Write.Group",
-            "type": "Delegated"
-          },
-          {
-            "name": "LiveShareSession.ReadWrite.Chat",
-            "type": "Delegated"
-          },
-          {
-            "name": "LiveShareSession.ReadWrite.Group",
-            "type": "Delegated"
-          }
-        ]
-      }
+        }
+      ]
+    }
+  ],
+  "webApplicationInfo": {
+    "id": "ddb52196-dcbf-49d4-9528-6b1bffaa1dbd",
+    "resource": "api://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/botid-ddb52196-dcbf-49d4-9528-6b1bffaa1dbd"
+  },
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "*.tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net",
+    "tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net",
+    "*.online.tableau.com",
+    "token.botframework.com",
+    "*.microsoftonline.com"
+  ],
+  "authorization": {
+    "permissions": {
+      "resourceSpecific": [
+        {
+          "name": "MeetingStage.Write.Chat",
+          "type": "Delegated"
+        },
+        {
+          "name": "ChannelMeetingStage.Write.Group",
+          "type": "Delegated"
+        },
+        {
+          "name": "LiveShareSession.ReadWrite.Chat",
+          "type": "Delegated"
+        },
+        {
+          "name": "LiveShareSession.ReadWrite.Group",
+          "type": "Delegated"
+        }
+      ]
     }
   }
+}
