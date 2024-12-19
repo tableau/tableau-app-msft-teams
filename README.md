@@ -68,7 +68,26 @@ Use the below documentation to create a direct trust connected app in Tableau, a
 
 [Tableau Server: Create a Connected App](https://help.tableau.com/current/server/en-us/connected\_apps.htm\#create-a-connected-app)
 
-When you click the **Add Site Config** button, the Tableau app will verify your connected app details actually work before saving them.  It uses the connected app details to create a JWT and tries to authenticate to the Tableau site (using Azure AD email or userPrincipalName).  If the Tableau authentication API call fails OR returns your Tableau user role as something other than Server/Site Admin, it won’t let you continue.  This is to ensure only a valid Tableau admin is creating the connection.  Don’t forget to enable the connected app in Tableau, otherwise the connectivity test will fail.
+
+When you click the **Add Site Config** button, the Tableau app will verify your connected app details actually work before saving them.  It uses the connected app details to create a JWT and tries to authenticate to the Tableau site using an attribute of your Microsoft Entra user profile.  
+![Entra Profile image](/public/images/entra-user-profile.png)
+
+There are a few options for the User Mapping Attribute.
+
+#### Attributes from the Microsoft Teams SDK:
+* [Preferred_Username](https://learn.microsoft.com/en-us/microsoftteams/platform/tabs/how-to/authentication/tab-sso-code#:~:text=user%27s%20display%20name.-,preferred_username,-%3A%20The%20app%20user%27s): The Teams user's email address, from the Teams SDK. In some cases, this value can differ from the email defined in Microsoft Entra.
+* [User Principal Name](https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/plan-connect-userprincipalname#what-is-userprincipalname): This is the primary way users login to Microsoft Entra
+
+#### Attributes from the user's Microsoft Entra profile:
+* [Primary Email](https://learn.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0#properties:~:text=%24select.-,mail,-String): This corresponds to the ```user.mail``` attribute, and represents the user's Email address 
+* [Mail Nickname](https://learn.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0#properties:~:text=%24select.-,mailNickname,-String): This corresponds to the ```user.mailNickname``` attribute, and represents an alias for th user.
+* [Employee ID](https://learn.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0#properties:~:text=a%20user.-,employeeId,-String): This corresponds to the ```user.employeeId``` attribute, and represents an employee identifier assigned by the organization.
+* <a href="https://learn.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0#properties:~:text=on%20null%20values).-,onPremisesDistinguishedName,-String">On-premise Distinguished Name</a>: This corresponds to the ```user.onPremiseDistinguishedName``` attribute, and represents the distinguished name (DN) synced from an on-premise Active Directory. 
+* <a href="https://learn.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0#properties:~:text=on%20null%20values).-,onPremisesUserPrincipalName,-String">On-premise user principal name</a>: This corresponds to the ```user.onPremiseUserPrincipalName``` attribute, and respresents the userPrincipalName synced from an on-premise Active Directory.
+* <a href="https://learn.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0#properties:~:text=%2C%20le).-,onPremisesSamAccountName,-String">On-premise SAM Account Name</a>: This corresponds to the ```user.onPremiseSamAccountName``` attribute, and represents the samAccountName synced from an on-premise Active Directory.
+* [Extension Attribute X](https://learn.microsoft.com/en-us/graph/extensibility-overview?tabs=http): Microsoft Entra allows adding up to 15 extra attributes to a user's Entra profile.  These options are there for when your Tableau username does not exist anywhere else in Microsoft Entra.  You can use an extension attribute to store the Tableau username for each Entra user, and then select this option in the Teams app.
+
+If the Tableau authentication API call fails OR returns your Tableau user role as something other than Server/Site Admin, it won’t let you continue.  This is to ensure only a valid Tableau admin is creating the connection.  Don’t forget to enable the connected app in Tableau, otherwise the connectivity test will fail.
 
 If you want to specify some domains to allow-list within the connected app, use the domains listed below:
 ```
