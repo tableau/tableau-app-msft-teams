@@ -193,7 +193,7 @@ No, when the Tableau app first loads it looks for any connected app details asso
 
 **Is the Tableau app supported in GovCloud?**
 
-No, currently the Tableau app for Teams is supported only on Commercial versions of Teams.  
+No, currently the Tableau app for Teams is supported only on Commercial versions of Teams.  Please add your vote to [this Idea](https://ideas.salesforce.com/s/idea/a0BHp000016KsRlMAK/support-tableau-app-for-microsoft-teams-for-azure-govcloud-environments) posted on the Salesforce IdeaExchange to voice your support for adding Azure GovCloud as a supported environment for the Tableau App for Microsoft Teams.
 
 **I installed the Tableau app and specified a setup policy to auto-install for users, but I don’t see it in my Teams client yet.  What’s going on?**  
 The push from the Teams admin center to Teams clients is known to take a while.  In fact, it can take [up to 24 hours](https://www.paitgroup.com/blog/how-to-make-a-custom-teams-app-available-to-everyone-in-your-organization\#:\~:text=At%20the%20time%20of%20this%20writing%20(June%202020)%2C%20it%20takes%20around%2024%20hours%20for%20the%20updated%20policy%20to%20be%20pushed%20to%20all%20users%20in%20the%20organization%20%E2%80%93%20both%20in%20a%20test%20environment%20and%20in%20an%20actual%20environment%20%E2%80%93%20so%20don%E2%80%99t%20expect%20to%20see%20the%20changes%20immediately) before your changes show up in the Teams client.
