@@ -192,6 +192,7 @@ The app gets the logged in Teams’ user’s email address, and uses a [Connecte
 No, when the Tableau app first loads it looks for any connected app details associated with the Teams tenant.  If some sites have already been configured, the Tableau app will use that information to authenticate the logged in user.  In other words, once an admin sets up the site config, all other teams users should be able to leverage it (assuming they are licensed in Tableau as well)
 
 **Is the Tableau app supported in GovCloud?**
+
 No, currently the Tableau app for Teams is supported only on Commercial versions of Teams.  
 
 **I installed the Tableau app and specified a setup policy to auto-install for users, but I don’t see it in my Teams client yet.  What’s going on?**  
