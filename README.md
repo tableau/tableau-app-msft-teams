@@ -95,7 +95,7 @@ tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net
 teams.microsoft.com
 *.teams.microsoft.com
 ```
-The first domain is where our app service is hosted, and the next 2 cover Microsoft Teams.  You may need to specify additional domains, if you are using the app in other platforms (outlook, m365, etc).  Microsoft provides a list of domains for their platforms [here](https://learn.microsoft.com/en-us/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide#microsoft-teams)
+The first domain is where our app service is hosted, and the next 2 cover Microsoft Teams.  You may need to specify additional domains, if you are using the app in other platforms (outlook, m365, etc).  Microsoft provides a list of domains for their platforms [here](https://learn.microsoft.com/en-us/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide#microsoft-teams).  
 
 Click on the below image, to watch our getting started [video](https://www.youtube.com/watch?v=nsa123RgCO0) on YouTube:
 
@@ -122,7 +122,7 @@ Here, you can interact with the view like you would directly in Tableau.  There 
 
 The **Pulse tab** (available only for the Tableau Cloud version of the app), will get any Pulse metrics you’ve subscribed to and embed them into the page as cards.  Similarly, you can use the purple **Search** button to search for additional pulse metrics and click on a given metric to view the fully interactive embedded version of Pulse.  There is also a **Share in Teams** button for quickly sharing your metric with another person, group chat, or channel.  
 
-![pulse tab](/public/images/image23.png)
+![pulse tab](/public/images/image24.png)
 
 When viewing the embedded Pulse metric, there is also a subscribe button at the top right.  This lets you subscribe/unsubscribe to metrics you may have found via search.
 
@@ -133,7 +133,7 @@ When viewing the embedded Pulse metric, there is also a subscribe button at the 
 [Channel Tabs](https://learn.microsoft.com/en-us/microsoftteams/platform/tabs/what-are-tabs?tabs=desktop%2Cdesktop1%2Cpersonal) are web apps that you can “pin” to a channel, personal chat, group chat, or meeting.  For example, channels have a **Plus** button at the top.    
 
 ![add channel tab](/public/images/image11.png)
-Clicking here will open the app selector, where you can select the Tableau app for Teams.  After adding the app, you will get prompted to select the content you want to display.  You can select up to 1 view and 5 Pulse metrics per tab.  More than this would start to get cluttered, so instead you should add multiple tabs instead.  
+Clicking here will open the app selector, where you can select the Tableau app for Teams.  After adding the app, you will get prompted to select the content you want to display.  You can select up to 1 view and 5 Pulse metrics per tab.  More than this would start to get cluttered, so instead you should add multiple tabs instead.  If you want to pin a custom view to a channel tab, copy and paste it's URL into the search UI.
 
 ![configure channel tab](/public/images/image14.png)
 
@@ -187,6 +187,13 @@ Selecting a view/metric from this list will generate an adaptive card for your s
 
 **How does this app authenticate to Tableau?**  
 The app gets the logged in Teams’ user’s email address, and uses a [Connected App](https://help.tableau.com/current/online/en-us/connected\_apps\_direct.htm) to authenticate as that user.  This means your ```email address``` or ```userPrincipalName``` in Azure AD must match the ```username``` in your Tableau site.
+
+**What if my Tableau Server is behind a firewall?**
+In order to fetch content from your Tableau Server, our app service needs to be able to reach it via HTTP requests.  This means your Tableau Server will need to be accessible to the public internet.  Typically enterprise security will not be OK with allowing incoming traffic from anywhere, so instead create an ingress rule to allow incoming HTTP requests from the below IP ranges:
+```
+4.152.0.0/15
+20.2.0.0/16
+```
 
 **Does every user need to set up their Tableau site?**  
 No, when the Tableau app first loads it looks for any connected app details associated with the Teams tenant.  If some sites have already been configured, the Tableau app will use that information to authenticate the logged in user.  In other words, once an admin sets up the site config, all other teams users should be able to leverage it (assuming they are licensed in Tableau as well)
