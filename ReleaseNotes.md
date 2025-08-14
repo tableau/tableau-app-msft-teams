@@ -7,6 +7,15 @@ A major release means updating the listing on the Microsoft Teams Marketplace.  
 #### Minor Release (ex. version 1.0.X)
 A minor release will include bug fixes and minor changes.  Since we're not adding new features or requesting new permissions, there is no need to updating the marketplace listing.  There is no need for customers to do anything for minor releases, the changes are automatically available.
 
+## Minor Release: 1.0.9 - Aug 14, 2025
+* **Pulse Insight Summaries** - If Tableau returned an error when fetching a Pulse Insight Summary, we just displayed the error code.  That wasn't very helpful though, so now we have friendlier messages for the most common errors
+
+* **Pulse Timeframes** - The labels for timeframes of Pulse metrics would always display as Month/Week/Year to Date, which did not account for metrics defined as Last Month/Week/Year/etc.  This issue has been resolved.
+
+* **Pulse Alerts** - Pulse metrics show a bell icon when the metric has an alert associated with it, but this was only within the Personal App.  This functionality has been added to channel tabs as well
+
+* **Pulse Subscribe icon** - The old icon for subscribing to Pulse metrics was a bell.  However that made more sense as the icon for alerts, so there is a new icon for subscribing/unsubscribing to Pulse metrics
+
 ## Minor Release: 1.0.8 - Jul 30, 2025
 
 * **Custom View Support** - Previously, custom views were supported for link unfurling only.  Now, users can search for custom views by URL within the personal app and the channel app.  This means you can now pin custom views to channel tabs.
