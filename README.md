@@ -195,6 +195,13 @@ In order to fetch content from your Tableau Server, our app service needs to be 
 20.2.0.0/16
 ```
 
+**What if my Tableau site is using Tableau Cloud IP Filtering allow list?**
+In order to fetch content from your Tableau Cloud site, our Teams app service needs to be able to reach your site via customer-allowed source IPs or IP ranges. This means your team will need to request that Azure (source) IP ranges be added to the site's IP Filtering (IPF) allow list.  While IPF is in preview access, you will need to work with your AE/CSM to do this. In the future this is planned to be self-service. This is required in order for the site data to be accessible to the customer Teams Server in Azure cloud. To continue to use Tableau Cloud IP Filtering on your site, please request that the incoming traffic from Azure below Azure IP ranges be added to your allow list:
+```
+4.152.0.0/15
+20.2.0.0/16
+```
+
 **Does every user need to set up their Tableau site?**  
 No, when the Tableau app first loads it looks for any connected app details associated with the Teams tenant.  If some sites have already been configured, the Tableau app will use that information to authenticate the logged in user.  In other words, once an admin sets up the site config, all other teams users should be able to leverage it (assuming they are licensed in Tableau as well)
 
