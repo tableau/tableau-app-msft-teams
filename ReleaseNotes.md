@@ -7,6 +7,13 @@ A major release means updating the listing on the Microsoft Teams Marketplace.  
 #### Minor Release (ex. version 1.0.X)
 A minor release will include bug fixes and minor changes.  Since we're not adding new features or requesting new permissions, there is no need to updating the marketplace listing.  There is no need for customers to do anything for minor releases, the changes are automatically available.
 
+## Minor Release: 1.0.10 - Oct 24, 2025
+* **Pulse Link Unfurls** - Preview cards of metrics were not rendering correctly, after Pulse introduced forecasts as part of the trendlines.  Preview cards (generated via link unfurling or the search message extension) now correctly render the metric's trendline.
+
+* **iOS Support** - While this app has always worked on iOS devices, the ability to view interactive dashboards/metrics was not supported due to a 3rd party cookies issue.  Now the app will detect your device type, and for iOS devices we will render dashboards/metrics as static images instead.  While not interactive, this does allow the users to view a high-resolution image of the dashboard/metric.
+
+* **Site Selector** - The personal app contains a site selector dropdown menu, which allows users to choose which Tableau Cloud site they are viewing data from.  Previously, changes made through the site selector menu were saved automatically as the user's new "default site".  This behavior has been corrected, so going forward changes made will not auto-save the site as a new "default site".  You can change the default site through the configuration tab in the personal app.
+  
 ## Minor Release: 1.0.9 - Aug 14, 2025
 * **Pulse Insight Summaries** - If Tableau returned an error when fetching a Pulse Insight Summary, we just displayed the error code.  That wasn't very helpful though, so now we have friendlier messages for the most common errors
 
