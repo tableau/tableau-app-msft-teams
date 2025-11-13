@@ -7,6 +7,9 @@ A major release means updating the listing on the Microsoft Teams Marketplace.  
 #### Minor Release (ex. version 1.0.X)
 A minor release will include bug fixes and minor changes.  Since we're not adding new features or requesting new permissions, there is no need to updating the marketplace listing.  There is no need for customers to do anything for minor releases, the changes are automatically available.
 
+## Minor Release: 1.0.11 - Nov 13, 2025
+* **Pulse Trendlines** - When using the Tableau Cloud app in meetings, the side panel used to be a fixed width.  Now Microsoft allows users to adjust the width, so we've updated the pulse trendlines to auto-fit whatever width is available.  There were also some cases of the axis formatting rendering incorrectly when adjusting the sidepanel's width while viewing 2 or more metrics, which has been resolved.
+  
 ## Minor Release: 1.0.10 - Oct 24, 2025
 * **Pulse Link Unfurls** - Preview cards of metrics were not rendering correctly, after Pulse introduced forecasts as part of the trendlines.  Preview cards (generated via link unfurling or the search message extension) now correctly render the metric's trendline.
 
