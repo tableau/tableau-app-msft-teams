@@ -1,7 +1,7 @@
 {
-  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.24/MicrosoftTeams.schema.json",
-  "manifestVersion": "1.24",
-  "version": "2.0.0",
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.21/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.21",
+  "version": "2.0.2",
   "id": "ddb52196-dcbf-49d4-9528-6b1bffaa1dbd",
   "developer": {
     "name": "Tableau",
@@ -19,8 +19,8 @@
     "full": "Tableau Server"
   },
   "description": {
-    "short": "Access Tableau's self-service analytics directly in Microsoft Teams",
-    "full": "The Tableau Server App for Microsoft Teams is an app designed for any business user. It is easier than ever to access, share, and collaborate on your Tableau dashboards within Microsoft Teams. Access Tableau through the personal app, channels tabs, and during meetings, ensuring that your trusted data is always at your fingertips, empowering data-driven decision making. \n\nTo get started, simply install the Tableau Server app using the below guide. \n\nOnce installed, you can:\n - Integrate key Tableau visualizations into your meetings in real-time\n - Share and pin your most relevant Tableau content in message and in channels\n - Discover and Interact with Tableau dashboards directly in Microsoft Teams\n\nNote: The Tableau Server app for Teams requires a Tableau license to unlock its full potential. Please refer to our detailed [GitHub documentation](https://github.com/tableau/tableau-app-msft-teams) for installation guidance with Server environments\n\n[Installation Instructions](https://github.com/tableau/tableau-app-msft-teams)\n[Get Started](https://www.tableau.com/products/trial)\n[Contact Us](https://www.tableau.com/about/contact)"
+    "short": "Access Tableau's self-service analytics directly in Microsoft 365",
+    "full": "The Tableau Server App for Microsoft 365 is an app designed for any business user. It is easier than ever to access, share, and collaborate on your Tableau dashboards within Microsoft Teams, PowerPoint (Preview), and Word (Preview). Access Tableau through the personal app, channels tabs, and during meetings, ensuring that your trusted data is always at your fingertips, empowering data-driven decision making. Please refer to our detailed [GitHub documentation](https://github.com/tableau/tableau-app-msft-teams) for installation guidance with Server environments. \n\nOnce installed, you can:\n - Integrate key Tableau visualization into your meetings in real-time\n - Share and pin your most relevant Tableau content in message and in channels\n - Embed Tableau visualizations into your PowerPoint presentations & Word documents\n\nNote: The Tableau Server app for Microsoft 365 requires a Tableau license to unlock its full potential. \nNote: Microsoft 365 Addins (PowerPoint, Word) are available in Public Preview.  To see if your Microsoft 365 app supports addins, refer to the [Microsoft documentation](https://learn.microsoft.com/en-us/office/dev/add-ins/develop/unified-manifest-overview#client-and-platform-support)\n\n[Installation Instructions](https://github.com/tableau/tableau-app-msft-teams)\n[Get Started](https://www.tableau.com/products/trial)\n[Contact Us](https://www.tableau.com/about/contact)"
   },
   "accentColor": "#FFFFFF",
   "supportedChannelTypes": [
@@ -43,6 +43,7 @@
   ],
   "configurableTabs": [
     {
+      "id": "tableauChannelTab1",
       "configurationUrl": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/tabs/#/sharedChannelConfig",
       "canUpdateConfiguration": true,
       "scopes": [
@@ -61,6 +62,7 @@
   ],
   "composeExtensions": [
     {
+      "id": "tableauMsgExtension1",
       "botId": "ddb52196-dcbf-49d4-9528-6b1bffaa1dbd",
       "canUpdateConfiguration": false,
       "commands": [
@@ -96,88 +98,168 @@
     }
   ],
   "extensions": [
-      {
-          "requirements": {
-              "scopes": [
-                  "document",
-                  "presentation"
-              ]
+    {
+      "requirements": {
+        "scopes": ["document", "presentation"],
+        "formFactors": ["desktop"]
+      },
+      "runtimes": [
+        {
+          "id": "TaskPaneImageEmbedRuntimeApp",
+          "type": "general",
+          "code": {
+            "page": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/office/#/imageEmbed"
           },
-          "runtimes": [
-              {
-                  "id": "TaskPaneRuntimeApp",
-                  "type": "general",
-                  "code": {
-                      "page": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/office/#/imageEmbed"
-                  },
-                  "lifetime": "short",
-                  "actions": [
-                      {
-                          "id": "TaskPaneRuntimeShowApp",
-                          "type": "openPage",
-                          "pinnable": false,
-                          "view": "dashboard"
-                      }
-                  ]
-              }
-          ],
-          "ribbons": [
-              {
-                  "contexts": [
-                      "default"
-                  ],
-                  "tabs": [
-                      {
-                          "builtInTabId": "TabHome",
-                          "groups": [
-                              {
-                                  "id": "msgReadGroup",
-                                  "label": "Tableau Server",
-                                  "icons": [
-                                      {
-                                          "size": 16,
-                                          "url": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/office/icons/tableau_icon.png"
-                                      },
-                                      {
-                                          "size": 80,
-                                          "url": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/office/icons/tableau_icon.png"
-                                      },{
-                                          "size": 32,
-                                          "url": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/office/icons/tableau_icon.png"
-                                      }
-                                  ],
-                                  "controls": [
-                                      {
-                                          "id": "tableauAddinAppButton",
-                                          "type": "button",
-                                          "label": "Tableau",
-                                          "icons": [
-                                                {
-                                                    "size": 16,
-                                                    "url": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/office/icons/tableau_icon.png"
-                                                },
-                                                {
-                                                    "size": 80,
-                                                    "url": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/office/icons/tableau_icon.png"
-                                                },{
-                                                    "size": 32,
-                                                    "url": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/office/icons/tableau_icon.png"
-                                                }
-                                          ],
-                                          "supertip": {
-                                              "title": "Tableau",
-                                              "description": "Find Tableau content to embed into your document"
-                                          },
-                                          "actionId": "TaskPaneRuntimeShowApp"
-                                      }
-                                  ]
-                              }
-                          ]
-                      }
-                  ]
-              }
+          "lifetime": "short",
+          "actions": [
+            {
+              "id": "TaskPaneImageEmbedRuntimeShowApp",
+              "type": "openPage",
+              "pinnable": false,
+              "view": "dashboard"
+            }
           ]
-      }
+        },
+        {
+          "id": "TaskPaneDataEmbedRuntimeApp",
+          "type": "general",
+          "code": {
+            "page": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/office/#/dataEmbed"
+          },
+          "lifetime": "short",
+          "actions": [
+            {
+              "id": "TaskPaneDataEmbedRuntimeShowApp",
+              "type": "openPage",
+              "pinnable": false,
+              "view": "dashboard"
+            }
+          ]
+        }
+      ],
+      "ribbons": [
+        {
+          "requirements": {
+            "scopes": ["presentation"],
+            "capabilities": [
+              {
+                "name": "PowerPointApi",
+                "minVersion": "1.10"
+              }
+            ]
+          },
+          "tabs": [
+            {
+              "builtInTabId": "TabHome",
+              "groups": [
+                {
+                  "id": "officeTabPpt",
+                  "label": "Tableau Server",
+                  "icons": [
+                    {
+                      "size": 16,
+                      "url": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/office/icons/tableau_icon.png"
+                    },
+                    {
+                      "size": 80,
+                      "url": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/office/icons/tableau_icon.png"
+                    },{
+                      "size": 32,
+                      "url": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/office/icons/tableau_icon.png"
+                    }
+                  ],
+                  "controls": [
+                    {
+                      "id": "tableauAddinAppButton",
+                      "type": "button",
+                      "label": "Tableau",
+                      "icons": [
+                        {
+                          "size": 16,
+                          "url": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/office/icons/tableau_icon.png"
+                        },
+                        {
+                          "size": 80,
+                          "url": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/office/icons/tableau_icon.png"
+                        },{
+                          "size": 32,
+                          "url": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/office/icons/tableau_icon.png"
+                        }
+                      ],
+                      "supertip": {
+                        "title": "Tableau",
+                        "description": "Find Tableau content to embed into your document"
+                      },
+                      "actionId": "TaskPaneImageEmbedRuntimeShowApp"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "requirements": {
+            "scopes": ["document"],
+            "capabilities": [
+              {
+                "name": "WordApi",
+                "minVersion": "1.9"
+              }
+            ]
+          },
+          "tabs": [
+            {
+              "builtInTabId": "TabHome",
+              "groups": [
+                {
+                  "id": "officeTabWord",
+                  "label": "Tableau Server",
+                  "icons": [
+                    {
+                      "size": 16,
+                      "url": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/office/icons/tableau_icon.png"
+                    },
+                    {
+                      "size": 80,
+                      "url": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/office/icons/tableau_icon.png"
+                    },{
+                      "size": 32,
+                      "url": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/office/icons/tableau_icon.png"
+                    }
+                  ],
+                  "controls": [
+                    {
+                      "id": "tableauAddinAppButton",
+                      "type": "button",
+                      "label": "Tableau",
+                      "icons": [
+                        {
+                          "size": 16,
+                          "url": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/office/icons/tableau_icon.png"
+                        },
+                        {
+                          "size": 80,
+                          "url": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/office/icons/tableau_icon.png"
+                        },{
+                          "size": 32,
+                          "url": "https://tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net/office/icons/tableau_icon.png"
+                        }
+                      ],
+                      "supertip": {
+                        "title": "Tableau",
+                        "description": "Find Tableau content to embed into your document"
+                      },
+                      "actionId": "TaskPaneImageEmbedRuntimeShowApp"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
   ],
   "webApplicationInfo": {
     "id": "ddb52196-dcbf-49d4-9528-6b1bffaa1dbd",
@@ -188,8 +270,8 @@
     "permissions": {
       "resourceSpecific": [
         {
-            "name": "Document.ReadWrite.User",
-            "type": "Delegated"
+          "name": "Document.ReadWrite.User",
+          "type": "Delegated"
         },
         {
           "name": "MeetingStage.Write.Chat",
