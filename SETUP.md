@@ -176,4 +176,4 @@ Once your app has been configured for 1 or more sites, you can always get back t
 
 # Notes
 [^1]:  Note that the privilege level for this addon's permissions will appear as **high**.  This is due to the ```Document.ReadWrite.User``` permission, which allows us to read and write to a user's files.  This is required to insert and update Tableau images.
-[^2]:  Note that the deployment of Office addins can take some time ([up to 72 hours](https://learn.microsoft.com/en-us/microsoft-365/admin/manage/centralized-deployment-faq?view=o365-worldwide#how-long-does-it-take-for-add-ins-to-show-up-for-all-users-)) before appearing for end users.  This also applies to updating/removing Office addins.  
+[^2]:  Note that the deployment of Office addins can take some time (usually 10-15 minutes, but [up to 72 hours](https://learn.microsoft.com/en-us/microsoft-365/admin/manage/centralized-deployment-faq?view=o365-worldwide#how-long-does-it-take-for-add-ins-to-show-up-for-all-users-)) before appearing for end users.  This also applies to updating/removing Office addins.  
