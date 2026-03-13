@@ -53,6 +53,11 @@ You should see a confirmation page, showing the deployment as complete[^2].
 
 ![app install part 4](/public/images/image54.png)
 
+#### Optional: Auto-pin the app in Teams
+Though optional, we recommend creating a [Setup Policy](https://learn.microsoft.com/en-us/microsoftteams/teams-app-setup-policies#install-agents-and-apps-for-your-users-on-teams) in the [Teams Admin Center](https://admin.teams.microsoft.com/policies/app-setup) to force the app to be installed automatically within Teams.  You can also ensure the app is pinned to the left-side panel of Teams, making it easier to find for users.
+
+![Create setup policy](/public/images/image37.png)
+
 ### Option B: Office only (no Teams)
 If you want to use the Office addin exclusively, start by following the same steps from [Option A](#option-a-teams-and-office).  You will also need a User group that has no members (or at least members that are OK to see the Tableau app in Teams).  Once this is done, login to the [Teams Admin Center](https://admin.teams.microsoft.com/policies/manage-apps) and navigate to the Teams Apps -> Manage Apps.  Change the availability of the app to your empty group.  
 
