@@ -14,54 +14,63 @@ In order to use the Tableau App for Microsoft Teams, you need a few things:
     ```
   * The Tableau app uses the Embedding API to embed interactive dashboards from Tableau Server.  So your end users will need to be able to access Tableau Server in the same way they access Microsoft Teams.  The specific requirements will vary depending on your implementation of Microsoft Teams, for example if users must be on the VPN to use Teams then their Tableau access needs to match that.  Or if they access Teams through the public internet, then Tableau would also need to be accessible through the public internet.  Keep in mind Teams also has mobile apps, so the users may try and access Tableau Server from their mobile devices as well.
 * **Microsoft E365 Subscription** \- The Tableau app is built to work within Microsoft Teams, so you will need an [E365 subscription](https://www.microsoft.com/en-us/microsoft-365/products-apps-services).  Depending on your organization’s [policies](https://learn.microsoft.com/en-us/microsoftteams/app-policies), you may also need to be an E365 admin in order to install the app.  
-* **Microsoft Teams** \- In order to use the Tableau app, you will need access to Microsoft Teams.  You can use either the [Teams client app](https://www.microsoft.com/en-us/microsoft-teams/download-app) or login to Teams using your [web browser](https://teams.microsoft.com/).  
-* **User mappings** \- The end users of the Tableau app will already be licensed for Microsoft Teams, but they will also need licenses for Tableau.  Further, the user’s email or UserPrincipalName in Azure AD (used by Teams) must match the username in Tableau (for single-sign on)
+* **Microsoft Teams and/or Office** \- In order to use the Tableau app, you will need access to Microsoft Teams and/or Office.  You can use either the [Desktop app](https://www.microsoft.com/en-us/microsoft-teams/download-app) or login to M365 using your [web browser](https://teams.microsoft.com/).  
+* **User mappings** \- The end users of the Tableau app will already be licensed for Microsoft Teams/Office, but they will also need licenses for Tableau.  Additionally, the end users' Entra profiles (used by Teams) must contain an attribute that matches the user's Tableau username (for single-sign on)
 
 # Step 1: Install the app for Teams and/or Office
 
-The steps to install the app depend on whether you are using Tableau Cloud or Tableau Server.  Tableau Cloud customers can install the Tableau Cloud app for Teams in the [Microsoft Teams Marketplace](https://marketplace.microsoft.com/en-us/product/office/wa200007445?tab=overview).  
+The steps to install the app depend on whether you are using Tableau Cloud or Tableau Server.  
+
+Tableau Cloud customers can install the Tableau Cloud app for Teams in the [Microsoft Teams Marketplace](https://marketplace.microsoft.com/en-us/product/office/wa200007445?tab=overview).  
 
 Tableau Server customers will need to take a few extra steps to complete the installation.  This is because apps in Microsoft 365 are required to [specify an allowlist](https://learn.microsoft.com/en-us/microsoft-365/extensibility/schema/root?view=m365-app-1.25&tabs=syntax#validdomains) of URLs they can interact with.  Since Tableau Server customers will all have different hostnames for their Tableau Server environment, there's no way for us to account for this in the app from the Marketplace.  
 
 ## Tableau Cloud
-The Tableau Cloud app can be found in the [Microsoft Marketplace](https://marketplace.microsoft.com/en-us/product/office/wa200007445?tab=overview).  Since Microsoft provides various installation paths for Teams app and Office addins, you can choose to install the app for just Teams, just Office, or both.
+The Tableau Cloud app can be found in the [Microsoft Marketplace](https://marketplace.microsoft.com/en-us/product/office/wa200007445?tab=overview).  The Tableau Cloud app includes a Teams app and Office addin, so there are a few different installation paths depending on what you want to provide for your end users.
 
-### Step 1a: Install the Tableau App for Teams
-The process of installing apps for Microsoft Teams will likely vary depending on your org’s app policies.  Some customers lock down what apps users are allowed to install in Teams, and if that’s the case the installation will require a Microsoft E365 admin. 
+### Option A: Teams and Office
+The simplest installation path is to enable your users to use the Tableau app in both Teams and Office.  Login to the [Microsoft 365 Admin Center](https://admin.cloud.microsoft/?#/Settings/IntegratedApps) and navigate to the Integrated Apps page.  Click the **Get Apps** button and search for the Tableau Cloud app in the Marketplace.
 
-#### Admin-managed Installation
-If you are managing apps for your users, we need to start in the Teams admin center.  Login to [https://admin.teams.microsoft.com](https://admin.teams.microsoft.com) and navigate to **Teams Apps \-\> Manage Apps** page.  This is where you can manage what apps are available for users to install.  Search for the **Tableau Cloud** app on this page, and ensure the app is available for use (either Everyone or Specific Users/Groups)
+![Integrated apps page](/public/images/image49.png)
+
+Click the **Get it now** button to start the installation process
+
+![Tableau cloud app listing](/public/images/image50.png)
+
+Confirm you see the icons for Teams, PowerPoint, and Word in the list of host products
+
+![app install part 1](/public/images/image51.png)
+
+Specify which users/groups the app will be installed for
+
+![app install part 2](/public/images/image52.png)
+
+The Tableau app requires consent to specific permissions in order to work.  More details about app permissions can be found in the FAQ.  After consenting to the required permissions, continue to the last page and then click the **Finish Deployment** button.
+
+![app install part 3](/public/images/image53.png)
+
+You should see a confirmation page, showing the deployment as complete[^2].  
+
+![app install part 4](/public/images/image54.png)
+
+### Option B: Office only (no Teams)
+If you want to use the Office addin exclusively, start by following the same steps from Option A.  You will also need a User group that has no members (or at least members that are OK to see the Tableau app in Teams).  Once this is done, login to the [Teams Admin Center](https://admin.teams.microsoft.com/policies/manage-apps) and navigate to the Teams Apps -> Manage Apps.  Change the availability of the app to your empty group.  
+
+![Remove app availability in Teams](/public/images/image55.png)
+
+By creating this restriction in the Teams admin center, users will not be able to see the app in Teams but will retain access in Office products.  Do NOT set the app availability to **No one** because that setting will carry over to Office as well.
+
+### Option C: Teams only (no Office)
+If you want to use the app exclusively in Teams, do not follow the steps from Option A.  Instead, use the Teams admin center to install the app using a Setup Policy.  Login to [Teams Admin Center](https://admin.teams.microsoft.com/policies/manage-apps) and navigate to **Teams Apps \-\> Manage Apps** page.  This is where you can manage what apps are available for users to install.  Search for the **Tableau Cloud** app on this page, and ensure the app is available for use (either Everyone or Specific Users/Groups)
 ![Edit app availability](/public/images/image36.png)
 
-You can also set an app setup policy, for pre-installing the Tableau app for users.
+Next, create an app Setup Policy, which will pre-install the app for users in Teams.  By using an Setup Policy, the deployment impacts only Teams and will ensure the app does not appear in Office.
 ![Create setup policy](/public/images/image37.png)
 
-#### User-managed Installation
-If you want your end users to choose whether or not to use the Tableau app, it will still need to be available to users from the **Manage Apps** page in the Teams admin center.  Instead of using an app setup policy though, allow the end users to install the app themselves through the Teams app's **App Management** page.
+### Option D: Updating existing deployments
+If you have already installed the Tableau app from the marketplace, it should continue to work as expected.  If you installed it via the *Integrated Apps* section of the M365 Admin Center, find the Tableau Cloud app under the list of Deployed Apps.  Look for a notification to upgrade the app or accept new permisions.  Version 2 of the Tableau app includes a new permission, ```File.ReadWrite```, which allows users to add images of Tableau content to their presentations and documents.  
 
-![Install app](/public/images/image38.png)
-
-After installing, they will be prompted to choose where it's installed.  Just clicking the *Open* button will open the Personal App, but they can also choose to install it to a specific channel or meeting.
-
-![Install app part 2](/public/images/image39.png)
-
-### Step 1b: Install the Tableau App for Office
-When the Tableau Cloud app gets installed from the marketplace, it should also be installed for Office.  However, in order to work in Office additional permissions must be accepted by an Admin. Follow the below steps if you want to enable your users to access the Tableau app within Office.
-
-#### Admin-managed Deployment
-Sign into the [Microsoft 365 Admin Center](https://admin.cloud.microsoft/?source=applauncher#/Settings/IntegratedApps) and navigate to **Settings -> Integrated Apps** and switch to the **Available Apps** tab.  Search for **Tableau Cloud** in the search bar, and select the **Tableau Cloud** app.
-
-![Integrated apps page](/public/images/image46.png)
-
-From here, click the **Deploy app** button.
-
-![Tableau Cloud app listing](/public/images/image47.png)
-
-Select the users/groups you want to deploy the app to, and **Accept** the required permissions.  
-
-![Tableau Cloud app permissions](/public/images/image48.png)
-
-Once this is done, click the **Finish Deployement** button to start the deployment process[^2].
+If you installed the Tableau app using a Setup Policy, then you will need to follow the steps from Option A.  This will ensure the proper permissions are granted to the app, so that it can work in Office products as well as Teams.
 
 ## Tableau Server
 
@@ -75,54 +84,37 @@ Download the manifest (zip file) titled ‘tableau-server-app-for-teams.zip’ f
 
 Once the changes have been saved, re-create the zip file and use that as your app package file.  The zip file should not contain any folders within it.
 
-### Step 1.2a: Install the Tableau App for Teams
+### Step 1.2: Install the Tableau App for Teams
 
-The process of installing apps for Microsoft Teams will likely vary depending on your org’s app policies.  Some customers lock down what apps users are allowed to install in Teams, and if that’s the case the installation will require a Microsoft E365 admin.  
-
-#### Admin-managed Installation
-
-If you are managing apps for your users, we need to start in the Teams admin center.  Login to [https://admin.teams.microsoft.com](https://admin.teams.microsoft.com) and navigate to **Teams Apps \-\> Manage Apps** page.  This is where you can manage what apps are available for users to install.  Click on the Upload new App button and upload the manifest zip file from Step 2\.  
+Login to the [Teams Admin Center](https://admin.teams.microsoft.com) and navigate to **Teams Apps \-\> Manage Apps** page.  This is where you can manage what apps are available for users to install.  Click on the **Upload new App** button and upload the manifest zip file from Step 1.1\.  
 
 ![Install app](/public/images/image20.png)
 
 Once installed, you should get a link to manage the app.  
 ![Install app complete](/public/images/image5.png)
 
-It may take up to 24 hours, but now the Tableau app will be available for users to install in Teams.  As an optional step, an E365 admin may want to auto-install the app for all (or a subset) users.  To do this, use the Teams admin center to navigate to **Teams apps** \-\> **Setup policies**. Create a new policy and click the **Add apps** button under **Installed apps**.  Search for the Tableau app and click **Add.**  You may also want to “pin” the Tableau app in your users’  left navigation.  Once you’ve made your selections, click the save button.  Again, it may take up to 24 hours for these changes to reach your end users.  
+It may take up to 24 hours, but now the Tableau app will be available for users to install in Teams.  As an optional step, you may want to auto-install the app for all (or a subset) users.  To do this, use the Teams admin center to navigate to **Teams apps** \-\> **Setup policies**. Create a new policy and click the **Add apps** button under **Installed apps**.  Search for the Tableau app and click **Add.**  You may also want to “pin” the Tableau app in your users’ left navigation.  Once you’ve made your selections, click the save button.  Again, it may take up to 24 hours for these changes to reach your end users.  
 
 ![setup app policy](/public/images/image18.png)
 
-#### User-managed Installation
+### Step 1.3: Install the Tableau App for Office
+Even though the Tableau app is a single app package that supports both Teams and Office, Microsoft has different deployment paths for custom apps in Teams and Office.  If you want to enable your end users to use the Tableau app in Office, open the [Microsoft 365 Admin Center](https://admin.cloud.microsoft/) and navigate to the **Agents -> All Agents** tab.  Click the **Upload Custom Agent** button.
 
-If you want your users to decide if they want the app, they can install the app directly from Teams.   Goto the **Apps** page then click the **Manage your apps** button. This shows a list of all the apps installed for your user.  Click the **Upload an app** button, and pass in the manifest zip file.
-
-![Install app](/public/images/image12.png)
-
-You should see a purple **Add** button.  Clicking here will install the Tableau app.
-
-![Install app](/public/images/image19.png)
-
-### Step 1.2b: Install the Tableau App for Office
-Even though the Tableau app is a single app package that supports both Teams and Office, Microsoft has different deployment paths for Teams app and Office addins.  If you want to enable your end users to use the Tableau app in Office, follow the below steps:
-
-#### Admin-managed Installation
-For custom office addins, open the [Microsoft 365 Admin Center](https://admin.cloud.microsoft/) and navigate to the **Agents -> All Agents** tab.  Click the **Upload Custom Agent** button.
 ![Manage office addins](/public/images/image40.png)
 
 Upload the app package from step 1.1, and specify which users/groups should have access to the addin.
+
 ![Upload office addin](/public/images/image41.png)
 
 Apply a policy template if desired, and Accept the required permissions[^1].  After doing so, click the **Finish Deployment** button to complete the installation[^2].   
-![Custom addin permissions](/public/images/image42.png)
 
-At this time, there is no path for end users to install custom apps without a Microsoft admin.
+![Custom addin permissions](/public/images/image42.png)
 
 # Step 2: Configure the app to work with your Tableau site(s)
 
 ## First time setup
 
 When you install the app for the first time, Teams will prompt you to open the app.  This brings you to the Tableau app’s Personal tab.  Assuming no sites have already been configured for the Teams tenant, you will see a different landing page that prompts you to enter some authentication details.  If you open the app from Microsoft Word or Powerpoint (instead of Teams) you will see a similar Initial Setup page.  The Teams app and Office addin use the same site configurations, so if you add a site in Teams it will also work in Office (and vice versa).
-
 
 If you are using Tableau Server and want to use the [default site](https://help.tableau.com/current/server/en-us/sites_intro.htm#the-default-site), leave the site name input field blank.
 ![Ininital setup](/public/images/image8.png)
@@ -131,7 +123,6 @@ Use the below documentation to create a direct trust connected app in Tableau, a
 [Tableau Cloud: Create Direct Trust Connected App](https://help.tableau.com/current/online/en-us/connected\_apps\_direct.htm\#create-a-connected-app)
 
 [Tableau Server: Create a Direct Trust Connected App](https://help.tableau.com/current/server/en-us/connected_apps_direct.htm)
-
 
 When you click the **Add Site Config** button, the Tableau app will verify your connected app details actually work before saving them.  It uses the connected app details to create a JWT and tries to authenticate to the Tableau site using an attribute of your Microsoft Entra user profile.  
 ![Entra Profile image](/public/images/entra-user-profile.png)
@@ -153,13 +144,16 @@ There are a few options for the User Mapping Attribute.
 
 If the Tableau authentication API call fails OR returns your Tableau user role as something other than Server/Site Admin, it won’t let you continue.  This is to ensure only a valid Tableau admin is creating the connection.  Don’t forget to enable the connected app in Tableau, otherwise the connectivity test will fail.
 
-If you want to specify some domains to allow-list within the connected app, use the domains listed below:
+In general, we recommend not specifying an allow-list of domain because it applies only to the Embedding API.  REST API calls (used for authenticating, getting view/metric metadata, and preview images) will not respect the domain allow list.  If you really want to specify some domains to allow-list within the connected app, use the domains listed below:
 ```
 tableau-ms-teams-prod-gycea7csh5hsbfh5.a02.azurefd.net
 teams.microsoft.com
 *.teams.microsoft.com
+teams.cloud.microsoft
+*.teams.cloud.microsoft
+*.sharepoint.com
 ```
-The first domain is where our app service is hosted, and the next 2 cover Microsoft Teams.  You may need to specify additional domains, if you are using the app in other platforms (outlook, m365, etc).  Microsoft provides a list of domains for their platforms [here](https://learn.microsoft.com/en-us/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide#microsoft-teams).  
+The first domain is where our app service is hosted, the next 4 cover Microsoft Teams, and the last one covers Word/PPT files (since they are stored in SharePoint).  You may need to specify additional domains, if you are using the app in other platforms (outlook, m365, etc).  Microsoft provides a list of domains for their platforms [here](https://learn.microsoft.com/en-us/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide#microsoft-teams).  
 
 Click on the below image, to watch our getting started [video](https://www.youtube.com/watch?v=nsa123RgCO0) on YouTube:
 
