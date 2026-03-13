@@ -54,7 +54,7 @@ You should see a confirmation page, showing the deployment as complete[^2].
 ![app install part 4](/public/images/image54.png)
 
 ### Option B: Office only (no Teams)
-If you want to use the Office addin exclusively, start by following the same steps from Option A.  You will also need a User group that has no members (or at least members that are OK to see the Tableau app in Teams).  Once this is done, login to the [Teams Admin Center](https://admin.teams.microsoft.com/policies/manage-apps) and navigate to the Teams Apps -> Manage Apps.  Change the availability of the app to your empty group.  
+If you want to use the Office addin exclusively, start by following the same steps from [Option A](#option-a-teams-and-office).  You will also need a User group that has no members (or at least members that are OK to see the Tableau app in Teams).  Once this is done, login to the [Teams Admin Center](https://admin.teams.microsoft.com/policies/manage-apps) and navigate to the Teams Apps -> Manage Apps.  Change the availability of the app to your empty group.  
 
 ![Remove app availability in Teams](/public/images/image55.png)
 
@@ -67,10 +67,19 @@ If you want to use the app exclusively in Teams, do not follow the steps from Op
 Next, create an app Setup Policy, which will pre-install the app for users in Teams.  By using an Setup Policy, the deployment impacts only Teams and will ensure the app does not appear in Office.
 ![Create setup policy](/public/images/image37.png)
 
-### Option D: Updating existing deployments
+### Option D: User installs directly from Teams or Office
+If a user installs the Tableau app from the Marketplace in Teams, it will require the user to consent to the requirement permissions.  Some organizations allow this, other explicitly block the ability for users to consent to app permissions.  In this case, follow the instructions in [Option A](#option-a-teams-and-office) to have a Microsoft admin deploy the app and grant the permissions.
+
+If the user is able to consent to app permissions on their own, it will work within Teams.  However, if users attempt to user the app in Office they will get the below error message.  
+```
+Could not retrieve access token from Microsoft Office API: API is not supported in this platform.
+``` 
+This is because Office addins requires additional permissions to be set before they can be used.  To resolve this, have a Microsoft admin complete the steps from [Option A](#option-a-teams-and-office).
+
+### Updating existing deployments
 If you have already installed the Tableau app from the marketplace, it should continue to work as expected.  If you installed it via the *Integrated Apps* section of the M365 Admin Center, find the Tableau Cloud app under the list of Deployed Apps.  Look for a notification to upgrade the app or accept new permisions.  Version 2 of the Tableau app includes a new permission, ```File.ReadWrite```, which allows users to add images of Tableau content to their presentations and documents.  
 
-If you installed the Tableau app using a Setup Policy, then you will need to follow the steps from Option A.  This will ensure the proper permissions are granted to the app, so that it can work in Office products as well as Teams.
+If you installed the Tableau app using a Setup Policy, then you will need to follow the steps from [Option A](#option-a-teams-and-office).  This will ensure the proper permissions are granted to the app, so that it can work in Office products as well as Teams.
 
 ## Tableau Server
 
