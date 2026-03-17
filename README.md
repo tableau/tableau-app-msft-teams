@@ -1,7 +1,7 @@
 [![Tableau Supported](https://img.shields.io/badge/Support%20Level-Tableau%20Supported-53bd92.svg)](https://www.tableau.com/support-levels-it-and-developer-tools)
 # Tableau App for Microsoft M365
 
-![Header Image](https://www.tableau.com/sites/default/files/2024-09/tableau-in-msft-teams_list-img.png)
+![Header Image](/public/images/banner.png)
 
 ## Overview
 The Tableau Cloud app for Microsoft M365 is an app in the MSFT Teams Marketplace that makes it easy to consume your content within Teams and Office.  Currently, the app is enabled as a [Teams app](https://learn.microsoft.com/en-us/microsoftteams/apps-in-teams#partner-apps-created-by-independent-app-developers) as well as an [Office addin](https://learn.microsoft.com/en-us/office/dev/add-ins/overview/office-add-ins).  It can be used from the below Microsoft Products:
