@@ -7,7 +7,7 @@ A major release means updating the listing on the Microsoft Teams Marketplace.  
 #### Minor Release (ex. version 1.0.X)
 A minor release will include bug fixes and minor changes.  Since we're not adding new features or requesting new permissions, there is no need to updating the marketplace listing.  There is no need for customers to do anything for minor releases, the changes are automatically available.
 
-## Major Release: 2.0.0 - TBD
+## Major Release: 2.0.0 - March 17, 2026
 
 * **Microsoft PowerPoint & Word support** - The Tableau Cloud app now appears in the ribbon within Word and PowerPoint.  This enables users to easily find and embed their Tableau content with documents and presentations.  The Tableau content is embedded as images, so we also provide a way to refresh those images when needed.
 
