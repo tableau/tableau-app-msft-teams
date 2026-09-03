@@ -6,54 +6,54 @@ The Tableau app is available as an [Teams app](https://learn.microsoft.com/en-us
 
 ## Personal App
 
-Personal app
+![Personal app](/public/images/image4.png)
 
 [Personal apps](https://support.microsoft.com/en-us/office/use-apps-with-a-personal-view-in-microsoft-teams-e3fcae6e-6da2-4c0c-bbea-941ef70716d9) live in the left navigation bar, and are tailored to the logged in user.  When you open the personal app you will default to the Tableau tab, which will show you the dashboards you've marked as [favorites](https://help.tableau.com/current/pro/desktop/en-us/favorites.htm) in Tableau.  Keep in mind that many object types can be marked as favorites in Tableau, and this app is only showing views (not workbooks).  Each card on the page represents a Tableau view, and includes the title and a preview image.  If you are looking for a view that is not marked as a favorite, you can always use the purple **Search** button at the top right.  Clicking on the image will take you to the fully embedded version of the view.   
 
-embedded view
+![embedded view](/public/images/image15.png)
 Here, you can interact with the view like you would directly in Tableau.  There is a **Share in Teams** button at the top right, which lets you share this view with a person, group chat, or channel.  If you want to go back to the main page, there is a back button at the top right.
 
 The **Pulse tab** (available only for the Tableau Cloud version of the app), will get any Pulse metrics you've subscribed to and embed them into the page as cards.  Similarly, you can use the purple **Search** button to search for additional pulse metrics and click on a given metric to view the fully interactive embedded version of Pulse.  There is also a **Share in Teams** button for quickly sharing your metric with another person, group chat, or channel.  
 
-pulse tab
+![pulse tab](/public/images/image24.png)
 
 When viewing the embedded Pulse metric, there is also a subscribe button at the top right.  This lets you subscribe/unsubscribe to metrics you may have found via search.
 
-pulse embedded
+![pulse embedded](/public/images/image13.png)
 
 ## Channel Tab
 
 [Channel Tabs](https://learn.microsoft.com/en-us/microsoftteams/platform/tabs/what-are-tabs?tabs=desktop%2Cdesktop1%2Cpersonal) are web apps that you can "pin" to a channel, personal chat, group chat, or meeting.  For example, channels have a **Plus** button at the top.    
 
-add channel tab
+![add channel tab](/public/images/image11.png)
 Clicking here will open the app selector, where you can select the Tableau app for Teams.  After adding the app, you will get prompted to select the content you want to display.  You can select up to 1 view and 5 Pulse metrics per tab.  More than this would start to get cluttered, so instead you should add multiple tabs instead.  If you want to pin a custom view to a channel tab, copy and paste it's URL into the search UI.
 
-configure channel tab
+![configure channel tab](/public/images/image14.png)
 
 Once you've saved your selection, you will see your content rendered as a new tab in the channel.  Each tab will default to the name "Tableau", but you can adjust this by using the **Rename** button in the tab's dropdown menu.  Pulse metrics you selected will be rendered as cards, but you can click on them to view the fully embedded version of Pulse.  
 
-channel tab
+![channel tab](/public/images/image21.png)
 
 ## Message Extension
 
 [Message Extensions](https://camerondwyer.com/2019/01/13/what-are-microsoft-teams-messaging-extensions-and-why-you-should-consider-build-one/) allow you to incorporate 3rd party content when writing messages.  This can be surfaced in many places within Teams, but generally it's anywhere you see a message compose box or chat window  
 
-message compose box
+![message compose box](/public/images/image7.png)
 
 The Tableau App for Teams includes 2 ways to include Tableau content.  First, you can copy/paste the URL[^1] for any tableau view or pulse metric into the compose box and it will get unfurled automatically into an [Adaptive Card](https://adaptivecards.io/).  You may have seen this already, when using the **Share in Teams** button.  It's the same idea, the URL for your Tableau content just gets unfurled automatically into an adaptive card.
 
 Adaptive cards are how all 3rd party content gets rendered within Teams chats/channels, and it generally includes some text and an optional image.  In our case, we embed an image of the dashboard/pulse metric along with some metadata.  There's also a button at the bottom of each card, which will open up the view/metric within the personal app.  
 
-view card
-pulse card
+![view card](/public/images/image22.png)
+![pulse card](/public/images/image1.png)
 
 If you don't have the URL for your view/metric, you can also search for the content you want to embed.  Click on the plus button (actions and apps), and select the Tableau app.    
 
-message extension
+![message extension](/public/images/image9.png)
 
 This will bring up a modal window where you can search for either a View or Pulse Metric.  
 
-message extension search query
+![message extension search query](/public/images/image16.png)
 
 Selecting a view/metric from this list will generate an adaptive card for your selection.  Note that clicking on an item triggers several API calls to Tableau behind the scenes in order to get the content & image for that card, so it may take a second or two to generate.  If you click more than once, you will end up with multiple cards being created.
 

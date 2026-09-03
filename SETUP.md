@@ -1,4 +1,4 @@
-[Tableau Supported](https://www.tableau.com/support-levels-it-and-developer-tools)
+[![Tableau Supported](https://img.shields.io/badge/Support%20Level-Tableau%20Supported-53bd92.svg)](https://www.tableau.com/support-levels-it-and-developer-tools)
 
 # Setup Guide
 
@@ -44,14 +44,14 @@ Once the changes have been saved, re-create the zip file and use that as your ap
 
 Login to the [Teams Admin Center](https://admin.teams.microsoft.com) and navigate to **Teams Apps  Manage Apps** page.  This is where you can manage what apps are available for users to install.  Click on the **Upload new App** button and upload the manifest zip file from Step 1.1  
 
-Install app
+![Install app](/public/images/image20.png)
 
 Once installed, you should get a link to manage the app.  
-Install app complete
+![Install app complete](/public/images/image5.png)
 
 It may take up to 24 hours, but now the Tableau app will be available for users to install in Teams.  As an optional step, you may want to auto-install the app for all (or a subset) users.  To do this, use the Teams admin center to navigate to **Teams apps**  **Setup policies**. Create a new policy and click the **Add apps** button under **Installed apps**.  Search for the Tableau app and click **Add.**  You may also want to “pin” the Tableau app in your users’ left navigation.  Once you’ve made your selections, click the save button.  Again, it may take up to 24 hours for these changes to reach your end users.  
 
-setup app policy
+![setup app policy](/public/images/image18.png)
 
 # Step 2: Configure the app to work with your Tableau site(s)
 
@@ -62,7 +62,7 @@ setup app policy
 When you install the app for the first time, Teams will prompt you to open the app.  This brings you to the Tableau app’s Personal tab.  Assuming no sites have already been configured for the Teams tenant, you will see a different landing page that prompts you to enter some authentication details.  If you open the app from Microsoft Word or Powerpoint (instead of Teams) you will see a similar Initial Setup page.  The Teams app and Office addin use the same site configurations, so if you add a site in Teams it will also work in Office (and vice versa).
 
 If you are using Tableau Server and want to use the [default site](https://help.tableau.com/current/server/en-us/sites_intro.htm#the-default-site), leave the site name input field blank.
-Ininital setup
+![Ininital setup](/public/images/image8.png)
 Use the below documentation to create a direct trust connected app in Tableau, and enter those details into this form.  
 
 [Tableau Cloud: Create Direct Trust Connected App](https://help.tableau.com/current/online/en-us/connected_apps_direct.htm#create-a-connected-app)
@@ -70,7 +70,7 @@ Use the below documentation to create a direct trust connected app in Tableau, a
 [Tableau Server: Create a Direct Trust Connected App](https://help.tableau.com/current/server/en-us/connected_apps_direct.htm)
 
 When you click the **Add Site Config** button, the Tableau app will verify your connected app details actually work before saving them.  It uses the connected app details to create a JWT and tries to authenticate to the Tableau site using an attribute of your Microsoft Entra user profile.  
-Entra Profile image
+![Entra Profile image](/public/images/entra-user-profile.png)
 
 There are a few options for the User Mapping Attribute.
 
@@ -107,10 +107,10 @@ The first domain is where our app service is hosted, and the next 4 cover Micros
 
 Click on the below image, to watch our getting started [video](https://www.youtube.com/watch?v=nsa123RgCO0) on YouTube:
 
-[Getting Started with the Tableau app for Microsoft Teams](https://www.youtube.com/watch?v=nsa123RgCO0)
+[![Getting Started with the Tableau app for Microsoft Teams](https://img.youtube.com/vi/nsa123RgCO0/0.jpg)](https://www.youtube.com/watch?v=nsa123RgCO0)
 
 ## Managing your sites
 
 Once your app has been configured for 1 or more sites, you can always get back to the site manager by using the **Configuration** tab within the Personal App.  This page verifies that you are a Tableau admin, and then shows a list of any connected apps already setup.  You can add or delete connected apps using this page.  We’ve limited the app to just a single connected app per Teams tenant  Tableau site.
 
-manage sites
+![manage sites](/public/images/image2.png)
