@@ -26,7 +26,7 @@ In order to use the Tableau App for Microsoft Teams, you need a few things:
 
 ### Step 1.1: Get the Tableau App manifest
 
-Download the manifest (zip file) titled ‘tableau_cloud_no_rsc.zip’ from [this repository](https://github.com/tableau/tableau-app-msft-teams/raw/main/appManifest/tableau-app-for-teams-server.zip).  
+Download the manifest (zip file) titled ‘tableau_cloud_no_rsc.zip’ from [this repository](https://github.com/tableau/tableau-app-msft-teams/raw/refs/heads/TableauCloud_No_RSC_Permissions/appManifest/tableau_cloud_no_rsc.zip).  
 
 If you are using Tableau Server, you will need to make some edits.  Unzip the file, and open up manifest.json.  Search the manifest.json file for all occurrences of `*.online.tableau.com`.  Replace this with the hostname of your Tableau Server environment.  For example, if your Tableau Server is found at `https://analytics.company.com` then you would use `analytics.company.com` as the new value.  There should be two occurrences that need to be changed:
 
