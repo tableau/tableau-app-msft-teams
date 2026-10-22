@@ -7,6 +7,10 @@ A major release means updating the listing on the Microsoft Teams Marketplace.  
 #### Minor Release (ex. version 1.0.X)
 A minor release will include bug fixes and minor changes.  Since we're not adding new features or requesting new permissions, there is no need to updating the marketplace listing.  There is no need for customers to do anything for minor releases, the changes are automatically available.
 
+## Major Release: 2.1.0 - October 22, 2026
+
+* **Microsoft Excel support** - The Tableau Cloud app now appears in the ribbon within Excel. This enables users to easily import data from a Tableau view/datasource/dashboard into Excel, export data from Excel into a Tableau web authoring session, and refresh imported data.
+
 ## Minor Release: 2.0.1 - April 29, 2026
 * **New Pulse Preview Images** - There are several places within the Teams app and Office addin, where we render Pulse metrics as images.  These images have been updated to mirror how they appear in Tableau Cloud.
   
